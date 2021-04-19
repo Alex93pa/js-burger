@@ -13,6 +13,7 @@ submitBtn.addEventListener("click", function() {
         
         if(ingrediente.checked){
                 somma += parseInt(ingrediente.value)
+                document.getElementById("price").innerHTML = somma
             }
         }
         
