@@ -19,12 +19,47 @@ submitBtn.addEventListener("click", function() {
         if(!nomeBurgerField.value){
             alert("manca il nome del burger")
         }
-        
-    var sconto = document.getElementById("coupon");
-    var sconto = sconto.value.toUpperCase()
-        if (sconto.value === AAAA0000 || sconto.value === BBBB1111) {
-            primoPrezzo * 0.80;
-        }
-        document.getElementById("price").innerHTML = primoPrezzo;
 
-})
+
+
+
+    var couponInput = document.getElementById("coupon");
+    var calculateBtn = document.getElementById("button");
+    var codiciSconto = ["aaaa0000", "bbbb1111"];
+    var spanPrezzo = document.getElementById("prezzo")
+
+    calculateBtn.addEventListener("click", function(){
+        //recupero il codice inserito dall'utente
+        var codiceInserito = couponInput.value
+        //controllo se è valido
+        var isCodiceValido = checkCodiceSconto(codiceInserito, codiciSconto)
+
+        if(isCodiceValido){
+        //eventualmente applico lo sconto
+            var scontoDaApplicare = valoreScontoCoupon * costoTotale /100
+
+            costoTotale = costoTotale - scontoDaApplicare
+        }
+
+            spanPrezzo.innerText = costoTotale.toFixed (2)
+            
+    });
+
+
+
+
+//------------------altro metodo--------------------
+
+    // function checkCodiciSconto(codiceUtente, listaCodici){ //codiciSconto 
+    //     var codUtenteFormattato = codiceUtente.toUpperCase();
+    //     var elementExist = false;
+        
+
+    //     if(listaCodici.indexOf(codUtenteFormattato) === -1) {
+    //         elementExist = false
+    //     } else (listaCodici.indexOf(codUtenteFormattato) > -1) {
+    //         elementExist = true
+    //     }
+    // }
+
+});
